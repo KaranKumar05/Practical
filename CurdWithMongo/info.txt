@@ -1,6 +1,6 @@
 npm init
 //====* Packages *====//
-npm i nodemon express mongoose dotenv
+npm i nodemon express mongoose dotenv cors
 
 
 //FrontEnd
@@ -27,3 +27,5 @@ export default {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+npm i axios react-router-dom react-hot-toast react-icons
