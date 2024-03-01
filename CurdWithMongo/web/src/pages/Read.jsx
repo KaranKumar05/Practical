@@ -1,15 +1,15 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Title from "../components/Title";
 import { Link } from "react-router-dom";
 import { toast, Toaster } from "react-hot-toast";
 
 function Read() {
-  const [users, setUsers] = useState();
+  const [users, setUsers] = useState([]);
 
   const getData = async () => {
     try {
-      const response = await axios.get("http://localhost:4000");
+      const response = await axios.get("/get-users");
       setUsers(response.data.data.users);
     } catch (error) {
       console.log(error);
@@ -17,11 +17,12 @@ function Read() {
   };
   useEffect(() => {
     getData();
-  }, [getData]);
+    console.log("Useeffect");
+  }, []);
 
   const deleteHandler = async (id) => {
     try {
-      const response = await axios.delete(`http://localhost:4000/delete/${id}`);
+      const response = await axios.delete(`/delete/${id}`);
       if (response.status == 204) {
         toast.success("User Deleted Successfully!");
         getData();
@@ -70,7 +71,7 @@ function Read() {
                       Edit
                     </Link>
                     <button
-                      onClick={(e) => {
+                      onClick={() => {
                         deleteHandler(user._id);
                       }}
                       className="bg-red-600 text-white py-1 px-4 rounded-md cursor-pointer"
@@ -81,7 +82,7 @@ function Read() {
                 </div>
               ))
               .reverse()
-          : "loading"}
+          : "No Data to Show"}
       </div>
     </div>
   );

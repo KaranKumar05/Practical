@@ -17,7 +17,7 @@ function Create() {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:4000/create", data);
+      const response = await axios.post("/create", data);
       if (response.data.status == "success") {
         toast.success("Create Successfully!");
         setData({

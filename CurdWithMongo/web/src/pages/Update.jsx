@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import Title from "../components/Title";
 import { VscDiscard } from "react-icons/vsc";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -37,11 +37,11 @@ function Update() {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `http://localhost:4000/update/${id}`,
+        `/update/${id}`,
         data
       );
       if (response.data.status == "success") {
-        toast.success("User Added Successfully!");
+        toast.success("User Updated Successfully!");
         setData({
           name: "",
           email: "",
